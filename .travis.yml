@@ -3,23 +3,23 @@ services:
   - docker
 
 before_install:
-  - docker build -t NiniiGit/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t niniiGit/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run NiniiGit/react-test npm test -- --coverage
+  - docker run -e CI=true niniiGit/react-test npm test
 
 after_success:
-  - docker build -t NiniiGit/multi-client ./client
-  - docker build -t NiniiGit/multi-nginx ./nginx
-  - docker build -t NiniiGit/multi-server ./server
-  - docker build -t NiniiGit/multi-worker ./worker
+  - docker build -t niniiGit/multi-client ./client
+  - docker build -t niniiGit/multi-nginx ./nginx
+  - docker build -t niniiGit/multi-server ./server
+  - docker build -t niniiGit/multi-worker ./worker
 
 
   #docker login to dockercli
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin 
   #take thos images and push on h
-  - docker push NiniiGit/multi-client
-  - docker push NiniiGit/multi-nginx
-  - docker push NiniiGit/multi-server
-  - docker push NiniiGit/multi-worker
+  - docker push niniiGit/multi-client
+  - docker push niniiGit/multi-nginx
+  - docker push niniiGit/multi-server
+  - docker push niniiGit/multi-worker
   
