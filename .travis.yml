@@ -20,6 +20,6 @@ after_success:
   #take thos images and push on h
   - docker push ninadocker73/multi-client
   - docker push ninadocker73/multi-nginx
-  - docker push nininadocker73/multi-server
+  - docker push ninadocker73/multi-server
   - docker push ninadocker73/multi-worker
   
