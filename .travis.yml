@@ -9,17 +9,17 @@ script:
   - docker run -e CI=true react-test npm test
 
 after_success:
-  - docker build -t niniiGit/multi-client ./client
-  - docker build -t niniiGit/multi-nginx ./nginx
-  - docker build -t niniiGit/multi-server ./server
-  - docker build -t niniiGit/multi-worker ./worker
+  - docker build -t ninadocker73/multi-client ./client
+  - docker build -t ninadocker73/multi-nginx ./nginx
+  - docker build -t ninadocker73/multi-server ./server
+  - docker build -t ninadocker73/multi-worker ./worker
 
 
   #docker login to dockercli
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin 
   #take thos images and push on h
-  - docker push niniiGit/multi-client
-  - docker push niniiGit/multi-nginx
-  - docker push niniiGit/multi-server
-  - docker push niniiGit/multi-worker
+  - docker push ninadocker73/multi-client
+  - docker push ninadocker73/multi-nginx
+  - docker push nininadocker73/multi-server
+  - docker push ninadocker73/multi-worker
   
