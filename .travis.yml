@@ -6,7 +6,7 @@ before_install:
   - docker build -t react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run -e CI=true niniiGit/react-test npm test
+  - docker run -e CI=true react-test npm test
 
 after_success:
   - docker build -t niniiGit/multi-client ./client
