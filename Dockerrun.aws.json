@@ -1,0 +1,37 @@
+{
+    "AWSEBDockerrunVersion" :2,
+    "containerDefinitions":[
+        {
+            "name":"client",
+            "image":"ninadocker73/multi-client",
+            "hostname": "client",
+            "essential": false
+        },
+        {
+            "name":"server",
+            "image":"ninadocker73/multi-server",
+            "hostname": "api",
+            "essential": false
+        },
+        {
+            "name":"worker",
+            "image":"ninadocker73/multi-worker",
+            "hostname": "worker",
+            "essential": false
+        },
+        {
+            "name":"nginx",
+            "image": "ninadocker73/multi-nginx",
+            "hostname": "nginx",
+            "essential": true,
+            "portMappings": [
+                {
+                    "hostPort": 80,
+                    "containerPort": 80
+                }
+
+            ],
+            "links": ["client","server"]
+        }
+    ]
+}

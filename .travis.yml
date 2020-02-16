@@ -22,4 +22,17 @@ after_success:
   - docker push ninadocker73/multi-nginx
   - docker push ninadocker73/multi-server
   - docker push ninadocker73/multi-worker
+
+deploy:
+  edge: true
+  provider: elasticbeanstalk
+  region: ap-south-1
+  app: multi-docker  
+  env: MultiDocker-env
+  bucket_name: elasticbeanstalk-ap-south-1-048831836751
+  bucket_path: docker-multi
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY  
   
